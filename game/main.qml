@@ -5,10 +5,12 @@ Window {
     visible: true
     width: 1600
     height: 600
-    title: qsTr("Run")
+    title: qsTr("Run2.0")
 
     Background {
         anchors.fill: parent
     }
+
+    Rectangle{}
 
 }
