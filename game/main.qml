@@ -5,7 +5,7 @@ Window {
     visible: true
     width: 1600
     height: 600
-    title: qsTr("Run")
+    title: qsTr("Jetpack Joyride killer")
 
     Background {
         anchors.fill: parent
