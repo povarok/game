@@ -5,7 +5,7 @@ Window {
     visible: true
     width: 1600
     height: 600
-    title: qsTr("Run")
+    title: qsTr("Don`t run")
 
     Background {
         anchors.fill: parent
