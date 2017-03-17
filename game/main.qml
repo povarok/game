@@ -5,10 +5,13 @@ Window {
     visible: true
     width: 1600
     height: 600
-    title: qsTr("Run")
+    title: qsTr("Oubs")
 
     Background {
         anchors.fill: parent
+        Behavior on x{
+
+        }
     }
 
 }
