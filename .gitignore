@@ -1,0 +1,11 @@
+*.pro.user*
+*build*
+*.qm
+moc_*
+ui_*.h
+*.so
+*.o
+*~
+.*
+src/.*
+data/*
