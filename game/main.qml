@@ -3,8 +3,8 @@ import QtQuick.Window 2.2
 
 Window {
     visible: true
-    width: 1600
-    height: 600
+    width: 288
+    height: 511
     title: qsTr("proekt igra")
 
     Background {
