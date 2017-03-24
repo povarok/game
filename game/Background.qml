@@ -1,9 +1,25 @@
 import QtQuick 2.0
 
-Rectangle {
-    anchors.fill: parent
-    Image {
-        source: "assets/background/scrollingBackground.png"
+Image {
+    id: background
+    source: "assets/background/scrollingBackground.png"
+    width: 1600
+    height: 600
+    fillMode: Image.TileHorizontally
+
+    Timer {
+        id: backgroundAnim
+        interval: 1000/60
+        repeat: true
+        running: true
+
+        onTriggered: {
+            background.x -= 5
+            background.width += 5
+        }
     }
 }
+
+
+
 

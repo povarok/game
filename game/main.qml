@@ -2,15 +2,23 @@ import QtQuick 2.5
 import QtQuick.Window 2.2
 
 Window {
+
+    id: game
     visible: true
     width: 1600
     height: 600
     title: qsTr("Run2.0")
+    property bool initialized: false
 
-    Background {
-        anchors.fill: parent
+    Background{}
+
+    Player{
+    x:game.width*0.0002
+    y: game.height*0.02
+    width: 50
+    height: 50
+
     }
 
-    Rectangle{}
 
 }
