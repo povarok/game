@@ -13,11 +13,11 @@ Window {
     Background{}
 
     Player{
-    x:game.width*0.0002
-    y: game.height*0.02
+    x:game.width/2
+    y: game.height/2
     width: 50
     height: 50
-
+    maxY: game.height - height
     }
 
 
