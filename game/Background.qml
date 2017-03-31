@@ -9,7 +9,7 @@ Rectangle {
 
         Timer {
             id: backgroundAnim
-            interval: 100
+            interval: 75
             repeat: true
             running: true
 
@@ -19,10 +19,9 @@ Rectangle {
             }
         }
     }
-        NumberAnimation on x {
-            to: -background.width
-        }
-        }
-
+//        NumberAnimation on x {
+//            to: -background.width
+//       }
+}
 
 
