@@ -4,11 +4,13 @@ import QtQuick.Window 2.2
 Window {
     id:root
     visible: true
-    width: 800
+    width: 1600
     height: 600
-    title: qsTr("Run SokolovDS")
+    title: qsTr("Run")
 
     Background {
+        id: backgroundImage
+        width: backgroundImage.width
         anchors.fill: parent
     }
 
