@@ -8,5 +8,6 @@
         <file>Obstacle.qml</file>
         <file>assets/background/ground.png</file>
         <file>assets/Obstacles/rocket.png</file>
+        <file>assets/Person/deadbird.png</file>
     </qresource>
 </RCC>

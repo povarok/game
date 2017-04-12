@@ -1,18 +1,45 @@
 import QtQuick 2.0
 Item {
     id: player
-    property int  valY: 0
-
     focus: true
     property int maxY: 0
+    property int  valY: 0
     onYChanged: {
-        valY = y
-        if (y > maxY){
 
-            y=maxY}
-        else if (y < 0)
-            y = 0
+        valY = y
+        if (y > maxY) {y=maxY}
+        else if (y < 0) {y = 0}
+//Невозможно передать переменную collision в Player'а
     }
+    //Состояния
+    states: State{
+        name:"Death"
+        when: Obstacle.collision > 0//mArea.pressed === true//сравнивание координат игрока и ракеты.
+        PropertyChanges {
+//            target: player
+//            x:50
+//            rotation:960
+            target: person
+            source:"assets/Person/deadbird.png"
+            x:50
+            rotation:760
+            }
+        }
+    //Переходы состояний
+    transitions: Transition {
+        from: ""
+        to: "Death"
+        reversible: false
+        ParallelAnimation{
+            NumberAnimation{
+                properties: "x,rotation"
+                duration: 1000
+                easing.type: Easing.InOutBounce
+            }
+        }
+    }
+
+
 
     Image {
         id: person

@@ -3,7 +3,7 @@ import QtQuick 2.0
 
 Item {
     id: obstacle
-   //property bool collision: false
+   property int collision: 0
 
     property int playerX: 0
     property int playerY: 0
@@ -11,9 +11,15 @@ Item {
     property int playerH: 0
 
     onXChanged: {
-        if (x + rocket.width <= playerX && x >= playerX
-         && y + rocket.height <= playerY && y >= playerY)
-            console.log("Boom")
+
+        if (obstacle.x + rocket.width >= playerX && obstacle.x <= playerX
+         && obstacle.y + rocket.height >= playerY && obstacle.y <= playerY){
+                //console.log("Boom")
+                collision += 1
+
+      }
+
+
     }
 
     Image {

@@ -18,6 +18,7 @@ Window {
 
     ListModel {
         id: obstacles
+        ListElement {ox: 1000; oy: 0}
         ListElement {ox: 1000; oy: 100}
         ListElement {ox: 2000; oy: 200}
         ListElement {ox: 3000; oy: 300}
@@ -53,8 +54,12 @@ Window {
     }
 
     MouseArea {
+        id:mArea
         anchors.fill: parent
-        onClicked: bg.stop()
+//        onClicked: {
+//            bg.stop()
+
+//        }
     }
 
 }
