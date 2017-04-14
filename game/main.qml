@@ -23,7 +23,7 @@ Window {
         id: bg
     }
     Text{
-        text: collision
+        text: collision + "столкновений"
     }
     ListModel {
         id: obstacles
