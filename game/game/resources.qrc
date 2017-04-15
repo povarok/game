@@ -1,5 +1,0 @@
-<RCC>
-    <qresource prefix="/">
-        <file>assets/background/scrollingBackground.png</file>
-    </qresource>
-</RCC>
