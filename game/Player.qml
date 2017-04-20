@@ -2,16 +2,33 @@ import QtQuick 2.0
 Item {
     id: player
     focus: true
+
     property int collision: 0
     property int maxY: 0
     property int  valY: 0
+    //signal stop()
+
+
     signal boomSignal()
-    onBoomSignal: player.state = "Death"
+    onBoomSignal: {
+
+
+        collision++
+        console.log("player"+collision)
+
+    }
     onYChanged: {
+
+        if (collision == 3){
+            player.state = "Death"
+
+            //console.log("умер"+collision)
+        }
 
         valY = y
         if (y > maxY) {y=maxY}
         else if (y < 0) {y = 0}
+
 //Невозможно передать переменную collision в Player'а
     }
     //Состояния

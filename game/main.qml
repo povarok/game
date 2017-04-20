@@ -15,15 +15,31 @@ Window {
 
 
     signal boomSignal()
-    onBoomSignal: collision++
+    onBoomSignal: {
+        collision++
+        console.log("boomSignal в main работает "+collision)
+        if (collision == 3){
+            bg.stop()
+            console.log("останавливаем экран при 3 столкновении")
+        }
+    }
 
+    /*signal stop()
 
+    onStop: {
+        bg.stop()
+        console.log("конец "+collision)
+}*/
 
     Background {
         id: bg
     }
     Text{
-        text: collision + "столкновений"
+        text: collision + " столкновений"
+        color: "white"
+        font.pixelSize: 40
+        x: 900
+        y: 10
     }
     ListModel {
         id: obstacles
@@ -47,6 +63,9 @@ Window {
             Component.onCompleted: {
                 boomSignal.connect(player.boomSignal)
                 boomSignal.connect(game.boomSignal)
+                //stop.connect(player.stop)
+
+
             }
         }
     }
@@ -60,6 +79,7 @@ Window {
         height: 50
         maxY: game.height - height
         collision: game.collision
+
 
     }
 
@@ -75,7 +95,10 @@ Window {
         onClicked: {
             bg.stop()
 
+
         }
+
     }
+
 
 }
