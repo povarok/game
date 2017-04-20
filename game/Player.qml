@@ -32,7 +32,8 @@ Item {
 //Невозможно передать переменную collision в Player'а
     }
     //Состояния
-    states: State{
+    states:
+        State{
         name:"Death"
         when: Obstacle.collision > 0//mArea.pressed === true//сравнивание координат игрока и ракеты.
         PropertyChanges {
@@ -43,6 +44,17 @@ Item {
             source:"assets/Person/deadbird.png"
             x:50
             rotation:760
+            }
+        }
+        State{
+        name:"Alive"
+
+        PropertyChanges {
+
+            target: person
+            source:"assets/Person/bird.png"
+
+
             }
         }
     //Переходы состояний
@@ -88,4 +100,12 @@ Item {
         text: player.x + " : " + player.y
         font.pixelSize: 40
     }
+    function restart() {
+
+
+        player.y = 300
+        player.state = "Alive"
+
+    }
 }
+

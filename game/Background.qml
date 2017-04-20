@@ -12,6 +12,13 @@ Image {
        player.state = "Death"
 
     }
+    function restart() {
+       background.width = 1600
+       background.x = 0
+       backgroundAnim.start()
+       player.state = "Alive"
+
+    }
 
     Timer {
         id: backgroundAnim

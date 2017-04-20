@@ -2,6 +2,8 @@ import QtQuick 2.5
 import QtQuick.Window 2.2
 
 
+
+
 Window {
 
     id: game
@@ -34,6 +36,11 @@ Window {
     Background {
         id: bg
     }
+    Obstacle {
+        id: obs
+        visible: false
+    }
+
     Text{
         text: collision + " столкновений"
         color: "white"
@@ -55,10 +62,12 @@ Window {
         Obstacle {
             x: ox + globalX
             y: oy
+
             playerX: player.x
             playerY: player.y
             playerW: player.width
             playerH: player.height
+
 
             Component.onCompleted: {
                 boomSignal.connect(player.boomSignal)
@@ -89,7 +98,7 @@ Window {
         font.pixelSize: 64
     }
 
-    MouseArea {
+    /*MouseArea {
         id:mArea
         anchors.fill: parent
         onClicked: {
@@ -98,7 +107,45 @@ Window {
 
         }
 
+    }*/
+
+
+
+    Rectangle {
+        id: rect
+        width: 100; height: 100
+        x: 850
+        y: 450
+        color: "black"
+
+        MouseArea {
+            anchors.fill: parent
+            onClicked: {
+                console.log("Restart!")
+                restart()
+                //game.
+            }
+        }
     }
 
 
+    function restart(){
+        //game.initialized = true
+        //game.globalX = bg.x
+        game.collision = 0
+        bg.restart()
+        //obs.restart()
+        //player.restart()
+        player.y = 300
+
+
+
+
+
+
+    }
+
+
+
 }
+

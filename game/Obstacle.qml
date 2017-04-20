@@ -9,6 +9,8 @@ Item {
     property int playerW: 0
     property int playerH: 0
 
+
+
     signal boomSignal()
     onXChanged: {
         if (obstacle.visible && obstacle.x + rocket.width >= playerX && obstacle.x <= playerX && obstacle.y + rocket.height >= playerY && obstacle.y <= playerY) {
@@ -43,4 +45,12 @@ Item {
     //    Behavior on x{
     //        NumberAnimation{duration: 1000}
     //    }
+    /*function restart() {
+        obstacle.boom = false
+        obstacle.playerX = 0
+        obstacle.playerY = 0
+        obstacle.playerW = 0
+        obstacle.playerH = 0
+
+    }*/
 }
