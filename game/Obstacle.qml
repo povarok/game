@@ -46,11 +46,7 @@ Item {
     //        NumberAnimation{duration: 1000}
     //    }
     /*function restart() {
-        obstacle.boom = false
-        obstacle.playerX = 0
-        obstacle.playerY = 0
-        obstacle.playerW = 0
-        obstacle.playerH = 0
+        obstacle.visible = true
 
     }*/
 }

@@ -36,10 +36,10 @@ Window {
     Background {
         id: bg
     }
-    Obstacle {
+    /*Obstacle {
         id: obs
         visible: false
-    }
+    }*/
 
     Text{
         text: collision + " столкновений"
@@ -56,6 +56,8 @@ Window {
         ListElement {ox: 3000; oy: 300}
         ListElement {ox: 4000; oy: 400}
     }
+
+
 
     Repeater {
         model: obstacles
@@ -114,19 +116,41 @@ Window {
     Rectangle {
         id: rect
         width: 100; height: 100
-        x: 850
-        y: 450
+        x: 400
+        y: 10
         color: "black"
+        border.color:  "black"
+        Text{
+            text: "Restart!"
+            color: "white"
+            font.pixelSize: 20
+            x: 15
+            y: 35
+
+        }
 
         MouseArea {
             anchors.fill: parent
+            hoverEnabled: true
+
             onClicked: {
                 console.log("Restart!")
                 restart()
                 //game.
             }
+            onEntered: {
+                console.log("цвет1")
+                parent.border.color = "white"
+
+            }
+            onExited: {
+                console.log("цвет2")
+                parent.border.color = "black"
+            }
         }
     }
+
+
 
 
     function restart(){
@@ -137,6 +161,9 @@ Window {
         //obs.restart()
         //player.restart()
         player.y = 300
+        //obs.restart()
+
+
 
 
 
