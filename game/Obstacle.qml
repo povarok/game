@@ -8,10 +8,18 @@ Item {
     property int playerY: 0
     property int playerW: 0
     property int playerH: 0
+    property string source: ""
 
 
 
     signal boomSignal()
+    signal restartobstacle ()
+    onRestartobstacle: {
+        obstacle.restart()
+        console.log ("123")
+    }
+
+    //
     onXChanged: {
         if (obstacle.visible && obstacle.x + rocket.width >= playerX && obstacle.x <= playerX && obstacle.y + rocket.height >= playerY && obstacle.y <= playerY) {
             boomSignal()
@@ -23,7 +31,7 @@ Item {
     Image {
         id: rocket
         width: 100;   height: 80; rotation: -90
-        source: "assets/Obstacles/rocket.png"
+        source: obstacle.source
     }
 
     Text {
@@ -45,8 +53,8 @@ Item {
     //    Behavior on x{
     //        NumberAnimation{duration: 1000}
     //    }
-    /*function restart() {
+    function restart() {
         obstacle.visible = true
 
-    }*/
+    }
 }

@@ -17,6 +17,7 @@ Item {
         console.log("player"+collision)
 
     }
+
     onYChanged: {
 
         if (collision == 3){

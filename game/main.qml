@@ -15,7 +15,7 @@ Window {
     property int globalX: bg.x
     property int collision: 0
 
-
+    signal restartobstacle()
     signal boomSignal()
     onBoomSignal: {
         collision++
@@ -50,11 +50,11 @@ Window {
     }
     ListModel {
         id: obstacles
-        ListElement {ox: 1000; oy: 0}
-        ListElement {ox: 1000; oy: 100}
-        ListElement {ox: 2000; oy: 200}
-        ListElement {ox: 3000; oy: 300}
-        ListElement {ox: 4000; oy: 400}
+        ListElement {ox: 1000; oy: 0; speed: 1; source1: "assets/Obstacles/rocket2.png"}
+        ListElement {ox: 1000; oy: 100; speed: 2; source1: "assets/Obstacles/rocket.png"}
+        ListElement {ox: 2000; oy: 200; speed: 5; source1: "assets/Obstacles/rocket2.png"}
+        ListElement {ox: 3000; oy: 300; speed: 3; source1: "assets/Obstacles/rocket4.png"}
+        ListElement {ox: 4000; oy: 400; speed: 8; source1: "assets/Obstacles/rocket.png"}
     }
 
 
@@ -62,18 +62,23 @@ Window {
     Repeater {
         model: obstacles
         Obstacle {
-            x: ox + globalX
+
+            x: ox + globalX*speed
             y: oy
 
             playerX: player.x
             playerY: player.y
             playerW: player.width
             playerH: player.height
+            source: source1
+
 
 
             Component.onCompleted: {
                 boomSignal.connect(player.boomSignal)
                 boomSignal.connect(game.boomSignal)
+                game.restartobstacle.connect(restartobstacle)
+                //restartobstacle.connect(game.restartobstacle)
                 //stop.connect(player.stop)
 
 
@@ -162,6 +167,7 @@ Window {
         //player.restart()
         player.y = 300
         //obs.restart()
+        restartobstacle()
 
 
 
