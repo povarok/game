@@ -8,17 +8,19 @@ Window {
 
     id: game
     visible: true
-    width: 1600
+    width: 800
     height: 600
     title: qsTr("Run2.0")
     property bool initialized: false
     property int globalX: bg.x
     property int collision: 0
+    property int count: 0
 
     signal restartobstacle()
     signal boomSignal()
     onBoomSignal: {
         collision++
+        obstacles.clear()
         console.log("boomSignal в main работает "+collision)
         if (collision == 3){
             bg.stop()
@@ -50,11 +52,11 @@ Window {
     }
     ListModel {
         id: obstacles
-        ListElement {ox: 1000; oy: 0; speed: 1; source1: "assets/Obstacles/rocket2.png"}
+        /*ListElement {ox: 1000; oy: 0; speed: 1; source1: "assets/Obstacles/rocket2.png"}
         ListElement {ox: 1000; oy: 100; speed: 2; source1: "assets/Obstacles/rocket.png"}
         ListElement {ox: 2000; oy: 200; speed: 5; source1: "assets/Obstacles/rocket2.png"}
         ListElement {ox: 3000; oy: 300; speed: 3; source1: "assets/Obstacles/rocket4.png"}
-        ListElement {ox: 4000; oy: 400; speed: 8; source1: "assets/Obstacles/rocket.png"}
+        ListElement {ox: 4000; oy: 400; speed: 8; source1: "assets/Obstacles/rocket.png"}*/
     }
 
 
@@ -85,6 +87,14 @@ Window {
             }
         }
     }
+
+    Timer{
+             running: true
+             repeat: true
+             id: rocketT
+             interval: 1000
+             onTriggered: {obstacles.append({"ox": 1000 * count , "oy": player.y, speed: 2, source1: "assets/Obstacles/rocket2.png"} ), count+=1}
+         }
 
 
 
@@ -168,6 +178,8 @@ Window {
         player.y = 300
         //obs.restart()
         restartobstacle()
+        count = 0
+        obstacles.clear()
 
 
 
