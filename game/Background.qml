@@ -6,26 +6,43 @@ Image {
     width: 1600
     height: 600
     fillMode: Image.TileHorizontally
-
     function stop() {
        backgroundAnim.stop()
-       player.state = "Death"
-
+    }
+    function start(){
+        backgroundAnim.start()
     }
     function restart() {
        background.width = 1600
        background.x = 0
        backgroundAnim.start()
-       player.state = "Alive"
+
 
     }
 
+    states: [
+        State {
+            name: "BgStop"
+            when: Obstacle.state === "RocketBoom"
+            PropertyChanges {
+                target: backgroundAnim
+                running: false
+
+            }
+        }
+    ]
+    transitions: [
+        Transition {
+            from: ""
+            to: "BgStop"
+
+        }
+    ]
     Timer {
         id: backgroundAnim
         interval: 1000/60
         repeat: true
-        running: true
-
+        running: false
         onTriggered: {
             background.x -= 5
             background.width += 5
